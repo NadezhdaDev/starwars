@@ -1,16 +1,31 @@
 # starwars
 
-A new Flutter project.
+ Тестовый проект ЗвездныеВоины.
+  
+ Использованные технологии:
+ cubit
+ бд - Hive + Freezd
+
+ Архитектура:
+ Содержит элементы чистой архитектуры
+ Построенна с помощью библиотеки flutter_bloc
+
+ P.S. Долго думала как в данном случае построить архитектуру. Первый вариант был - сделать наши 
+ объекты(персонажей, планеты и звездолеты) детьми от абстрактного класса с одним супер полем name, 
+ и дальше обложиться проверками на тип, дженериками и приведениями к типу. Второй вариант - для 
+ всех объектов делать отдельные сервисы и дублировать код. Выбрала промежуточный вариант, но 
+ ближе ко второму (ибо так нам советует дядюшка Боб) =) 
+ 
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+ !! В приложении не во всех местах реализован лоадер, поэтому иногда нужно подождать некоторое время, 
+ чтобы дданные перерисовались !!!
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+ Приложение начинается с application.dart который содержит в себе person_search_screen, planets_search_screen,
+ starships_search_screen. Каждый имеет futureBuilder, future которого триггерит подгрузку новой порции 
+ данных (если нажать кнопку некст) или подгрузку данных по поиску (если ввести более двух символов в поиске)
+ При нажатии на кнопку save объект сохраняеся в избранном(правый элемент боттом навигейшн бара)
+ Три обеъекта независимы друг от друга. В cubit хранятся выгруженные страницы и актуальный запрос.
+ 
+ Спасибо за внимание) 
